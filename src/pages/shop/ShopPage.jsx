@@ -4,21 +4,25 @@ import ShopFiltering from './ShopFiltering';
 import { useFetchAllProductsQuery } from '../../redux/features/products/productsApi';
 
 const filters = {
-    categories: ['الكل', 'دشداشه', 'كمه'],
-    colors: ['الكل', 'أسود', 'أحمر', 'ذهبي', 'أزرق', 'أخضر'],
-    priceRanges: [
-        { label: 'أقل من 50 ر.ع', min: 0, max: 50 },
-        { label: '50 ر.ع - 100 ر.ع', min: 50, max: 100 },
-        { label: '100 ر.ع - 200 ر.ع', min: 100, max: 200 },
-        { label: '200 ر.ع وأكثر', min: 200, max: Infinity }
+    categories: [
+       'الكل',
+        "مكياج",
+        "عطور",
+        "بخور",
+        "ملابس",
+        "فوط صحية",
+        "حفاضات",
+        "كلنكس ومشتقاته",
+        "أحذية",
+        "شنطة",
+        "هدايا"
     ]
 };
 
 const ShopPage = () => {
     const [filtersState, setFiltersState] = useState({
         category: 'الكل',
-        color: 'الكل',
-        priceRange: ''
+
     });
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,14 +30,10 @@ const ShopPage = () => {
 
     const [showFilters, setShowFilters] = useState(false); // حالة لعرض/إخفاء الفلاتر
 
-    const { category, color, priceRange } = filtersState;
-    const [minPrice, maxPrice] = priceRange.split('-').map(Number);
+    const { category } = filtersState;
 
     const { data: { products = [], totalPages, totalProducts } = {}, error, isLoading } = useFetchAllProductsQuery({
         category: category !== 'الكل' ? category : '',
-        color: color !== 'الكل' ? color : '',
-        minPrice: isNaN(minPrice) ? '' : minPrice,
-        maxPrice: isNaN(maxPrice) ? '' : maxPrice,
         page: currentPage,
         limit: ProductsPerPage,
     });
@@ -42,8 +42,6 @@ const ShopPage = () => {
     const clearFilters = () => {
         setFiltersState({
             category: 'الكل',
-            color: 'الكل',
-            priceRange: ''
         });
     };
 

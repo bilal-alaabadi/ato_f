@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import timings from "../../assets/pexels-pic-matti-450440252-29823568.jpg";
+import timings from "../../assets/Flux_Dev_A_beautifully_arranged_still_life_of_luxurious_perfum_1.jpg";
 
 const Banner = () => {
     return (

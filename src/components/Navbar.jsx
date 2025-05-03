@@ -72,15 +72,15 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="" className='text-sm sm:text-base md:text-lg hover:text-primary transition-colors duration-300'>
+                        <Link to={"/shop"} className='text-sm sm:text-base md:text-lg hover:text-primary transition-colors duration-300'>
                             المتجر
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="" className='text-sm sm:text-base md:text-lg hover:text-primary transition-colors duration-300'>
                             الصفحات
                         </Link>
-                    </li>
+                    </li> */}
 
                 </ul>
 
@@ -94,7 +94,7 @@ const Navbar = () => {
                     className="w-48 h-56 pt-6"  
                     loading="lazy" 
                 /> */}
-                <div>pinkheart</div>
+                <div className="w-4 h-4">M&N</div>
                 </Link>
             </div>
 
