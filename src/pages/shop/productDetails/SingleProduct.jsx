@@ -49,19 +49,19 @@ const SingleProduct = () => {
 
     return (
         <>
-            <section className='section__container bg-[#eff6ff]'>
-                <h2 className='section__header capitalize'>صفحة المنتج الفردي</h2>
+            <section className='section__container bg-[#e9b86b] pt-5'>
+                <h2 className='section__header text-white capitalize'>صفحة المنتج الفردي</h2>
                 <div className='section__subheader space-x-2'>
-                    <span className='hover:text-primary'><Link to="/">الرئيسية</Link></span>
+                    <span className=' text-white'><Link to="/">الرئيسية</Link></span>
                     <i className="ri-arrow-right-s-line"></i>
-                    <span className='hover:text-primary'><Link to="/shop">المتجر</Link></span>
+                    <span className=' text-white'><Link to="/shop">المتجر</Link></span>
                     <i className="ri-arrow-right-s-line"></i>
-                    <span className='hover:text-primary'>{singleProduct.name}</span>
+                    <span className=' text-white'>{singleProduct.name}</span>
                 </div>
             </section>
 
-            <section className='section__container mt-8'>
-                <div className='flex flex-col items-center md:flex-row gap-8'>
+            <section className='section__container mt-8 '>
+                <div className='flex flex-col items-center md:flex-row gap-8 '>
                     {/* صورة المنتج */}
                     <div className='md:w-1/2 w-full relative'>
                         {singleProduct.image && singleProduct.image.length > 0 ? (
@@ -100,7 +100,7 @@ const SingleProduct = () => {
 
                     <div className='md:w-1/2 w-full'>
                         <h3 className='text-2xl font-semibold mb-4'>{singleProduct.name}</h3>
-                        <p className='text-xl text-primary mb-4 space-x-1'>
+                        <p className='text-xl text-[#e9b86b] mb-4 space-x-1'>
                             {singleProduct.price} ر.ع
                             {singleProduct.oldPrice && (
                                 <s className='ml-1'>ر.ع {singleProduct.oldPrice}</s>
@@ -112,10 +112,7 @@ const SingleProduct = () => {
                         <div className='flex flex-col space-y-2'>
                             <p><strong>الفئة:</strong> {singleProduct.category}</p>
                             <p><strong>اللون:</strong> {singleProduct.color}</p>
-                            <div className='flex gap-1 items-center'>
-                                <strong>التقييم: </strong>
-                                <RatingStars rating={singleProduct.rating} />
-                            </div>
+
                         </div>
 
                         <button
@@ -123,7 +120,7 @@ const SingleProduct = () => {
                                 e.stopPropagation();
                                 handleAddToCart(singleProduct);
                             }}
-                            className='mt-6 px-6 py-3 bg-primary text-white rounded-md'
+                            className='mt-6 px-6 py-3 bg-[#e9b86b] text-white rounded-md'
                         >
                             إضافة إلى السلة
                         </button>

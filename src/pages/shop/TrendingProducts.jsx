@@ -61,13 +61,12 @@ const TrendingProducts = () => {
                             {/* Product Description */}
                             <div className="product__card__content text-center mt-4">
                                 <h4 className="text-lg font-semibold">{product.name}</h4>
-                                <p className="text-primary mt-2">
+                                <p className="text-[#e9b86b] mt-2">
                                     {product.price}.ر.ع
                                     {product.oldPrice && (
                                         <s className="text-gray-500 ml-2">ر.ع{product.oldPrice}ر.ع</s>
                                     )}
                                 </p>
-                                <RatingStars rating={product.rating} />
                             </div>
                         </div>
                     ))}
@@ -77,7 +76,7 @@ const TrendingProducts = () => {
             {/* Load More Products Button */}
             <div className="product__btn text-center mt-8" dir='rtl'>
                 {visibleProducts < products.length && (
-                    <button className="btn bg-primary text-white px-6 py-2 rounded-md" onClick={loadMoreProducts}>
+                    <button className="btn bg-[#e9b86b] text-white px-6 py-2 rounded-md" onClick={loadMoreProducts}>
                         عرض المزيد
                     </button>
                 )}

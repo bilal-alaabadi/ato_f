@@ -19,7 +19,7 @@ const ShopFiltering = ({ filters, filtersState, setFiltersState, clearFilters })
                                     onChange={(e) => {
                                         setFiltersState({ ...filtersState, category: e.target.value });
                                     }}
-                                    className="h-4 w-4 text-primary focus:ring-primary"
+                                    className="h-4 w-4 text-[#e9b86b] focus:ring-[#e9b86b]"
                                 />
                                 <span>{category}</span>
                             </label>
@@ -32,7 +32,7 @@ const ShopFiltering = ({ filters, filtersState, setFiltersState, clearFilters })
             <h3 className='font-medium text-lg'>الفلاتر</h3>
             <button 
                 onClick={clearFilters}
-                className='bg-primary-dark  py-2 px-4 text-white rounded hover:bg-primary-dark transition duration-300'
+                className='bg-[#e9b86b]  py-2 px-4 text-white rounded hover:bg-primary-dark transition duration-300'
             >
                 مسح الفلاتر
             </button>
@@ -47,39 +47,3 @@ const ShopFiltering = ({ filters, filtersState, setFiltersState, clearFilters })
 export default ShopFiltering;
 
 
-//     <div className='space-y-5 flex-shrink-0 w-64'>
-
-//         {/* الفئات فقط */}
-//         <div className='flex flex-col space-y-2'>
-//             <h4 className='font-medium'>الفئة</h4>
-//             <hr />
-//             <div className='space-y-2'>
-//                 {categories.map((cat) => (
-//                     <label key={cat.value} className='flex items-center cursor-pointer'>
-//                         <input 
-//                             type="radio" 
-//                             name="category" 
-//                             value={cat.value} 
-//                             checked={filtersState.categories === cat.value}
-//                             onChange={(e) => setFiltersState({...filtersState, category: e.target.value})}
-//                             className='mr-2'
-//                         />
-//                         <span>{cat.label}</span>
-//                     </label>
-//                 ))}
-//             </div>
-//         </div>
-//         <div className='mt-4'>
-//             <h3 className='font-medium text-lg'>الفلاتر</h3>
-//             <button 
-//                 onClick={clearFilters}
-//                 className='bg-primary-dark  py-2 px-4 text-white rounded hover:bg-primary-dark transition duration-300'
-//             >
-//                 مسح الفلاتر
-//             </button>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default ShopFiltering

@@ -60,9 +60,9 @@ const ShopPage = () => {
 
     return (
         <>
-            <section className='section__container bg-[#eff6ff]'>
-                <h2 className='section__header capitalize'>صفحة المتجر</h2>
-                <p className='section__subheader'>اكتشف أحدث الاختيارات: رفع مستوى أناقتك مع مجموعتنا المختارة من منتجات الموضة الرجالية الأكثر رواجًا.</p>
+            <section className='section__container bg-[#e9b86b]'>
+                <h2 className='section__header capitalize text-white'>صفحة المتجر</h2>
+                <p className='section__subheader  text-white'>اكتشف أحدث الاختيارات: رفع مستوى أناقتك مع مجموعتنا المختارة من منتجات الموضة الرجالية الأكثر رواجًا.</p>
             </section>
 
             <section className='section__container'>
@@ -70,7 +70,7 @@ const ShopPage = () => {
                     {/* زر عرض الفلاتر على الشاشات الصغيرة */}
                     <button
                         onClick={() => setShowFilters(!showFilters)}
-                        className='md:hidden bg-primary py-1 px-4 text-white rounded mb-4'
+                        className='md:hidden bg-[#e9b86b] py-1 px-4 text-white rounded mb-4'
                     >
                         {showFilters ? 'إخفاء الفلاتر' : 'عرض الفلاتر'}
                     </button>
