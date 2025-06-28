@@ -1,64 +1,62 @@
-import React, { useState } from 'react'
-
-import commentorIcon from "../../../assets/avatar.png"
-import { formatDate } from '../../../utils/formateDate'
-import RatingStars from '../../../components/RatingStars'
-import PostAReview from './PostAReview'
+import React, { useState } from 'react';
+import commentorIcon from "../../../assets/avatar.png";
+import { formatDate } from '../../../utils/formateDate';
+import RatingStars from '../../../components/RatingStars';
+import PostAReview from './PostAReview';
 
 const ReviewsCard = ({ productReviews }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const reviews = productReviews || [];
 
-    const reviews = productReviews || []
+  const handleOpenReviewModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const handleCloseReviewModal = () => {
+    setIsModalOpen(false);
+  };
 
-    const handleOpenReviewModal = () => {
-        setIsModalOpen(true)
-    }
-
-    const handleCloseReviewModal = () => {
-        setIsModalOpen(false)
-    }
-
-    return (
-        <div className='my-6  bg-white p-8'>
-            <div>
-                {
-                    reviews.length > 0 ? (<div>
-                        <h3 className='text-lg font-medium'>كل التعليقات</h3>
-                        <div>
-                            {
-                                reviews.map((review, index) => (
-                                    <div key={index} className='mt-4'>
-                                        <div className='flex gap-4  items-center'>
-                                            <img src={commentorIcon} alt="" className='size-14' />
-                                            <div className='space-y-1'>
-                                                <p className='text-lg font-medium underline capitalize underline-offset-4 text-blue-400'>{review?.userId?.username}</p>
-                                                <p className='text-[12px] italic'>{formatDate(review?.updatedAt)}</p>
-                                                <RatingStars rating={review?.rating} />
-                                            </div>
-                                        </div>
-                                        <div className='text-gray-600 mt-5  border p-8'>
-                                            <p className='md:w-4/5'>{review?.comment}</p>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>) : <p>لا تعليق حتى الان</p>
-                }
+  return (
+    <div className="my-6 bg-white p-8 rounded-xl shadow">
+      <div>
+        {reviews.length > 0 ? (
+          <div>
+            <h3 className="text-xl font-semibold text-[#3E4F63] mb-4">All Traveler Reviews</h3>
+            <div className="space-y-6">
+              {reviews.map((review, index) => (
+                <div key={index} className="border p-6 rounded-md shadow-sm">
+                  <div className="flex gap-4 items-center mb-4">
+                    <img src={commentorIcon} alt="avatar" className="w-14 h-14 rounded-full" />
+                    <div>
+                      <p className="text-blue-500 font-semibold capitalize">{review?.userId?.username}</p>
+                      <p className="text-sm italic text-gray-500">{formatDate(review?.updatedAt)}</p>
+                      <RatingStars rating={review?.rating} />
+                    </div>
+                  </div>
+                  <p className="text-gray-700">{review?.comment}</p>
+                </div>
+              ))}
             </div>
+          </div>
+        ) : (
+          <p className="text-gray-500">No reviews yet.</p>
+        )}
+      </div>
 
-            {/* add review button */}
-            <div className='mt-12'>
-                <button
-                    onClick={handleOpenReviewModal}
-                    className='px-6 py-3 bg-[#e9b86b] text-white rounded-md'> أضفة تعليق</button>
-            </div>
+      {/* Add Review Button */}
+      <div className="mt-12">
+        <button
+          onClick={handleOpenReviewModal}
+          className="px-6 py-3 bg-[#3E4F63] hover:bg-[#3E4F63] text-white rounded-md transition"
+        >
+          Leave a Review
+        </button>
+      </div>
 
-            {/* review modal  */}
-            <PostAReview isModalOpen={isModalOpen} handleClose={handleCloseReviewModal}/>
-        </div>
-    )
-}
+      {/* Review Modal */}
+      <PostAReview isModalOpen={isModalOpen} handleClose={handleCloseReviewModal} />
+    </div>
+  );
+};
 
-export default ReviewsCard
+export default ReviewsCard;

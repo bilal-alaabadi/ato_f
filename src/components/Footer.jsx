@@ -1,63 +1,58 @@
 import React from 'react';
-import { FaInstagram, FaTwitter, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
+import footerImage from "../assets/pool-relaxation-sea-scene-nature.jpg"; // Replace with your actual image
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-5">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-right">
-          
-          {/* قسم ABOUT */}
-          <div>
-            <h4 className="text-lg font-bold text-gray-800 mb-4">عن المتجر</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href={"/shop"} className="text-gray-600 hover:text-[#d3ae27]  transition-colors duration-300">المنتجات</a>
-              </li>
-            </ul>
-          </div>
-          
-          {/* قسم LEGAL */}
-          {/* <div>
-            <h4 className="text-lg font-bold text-gray-800 mb-4">الشروط والأحكام</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-primary transition">سياسة الإرجاع</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-primary transition">شروط الخصوصية</a>
-              </li>
-            </ul>
-          </div> */}
-          
-          {/* قسم SOCIAL */}
-          <div>
-            <h4 className="text-lg font-bold text-gray-800 mb-4">وسائل التواصل</h4>
-            <div className="flex justify-center md:justify-end gap-4">
-              <a href="" className="text-gray-600 hover:hover:text-[#d3ae27]  transition">
-                <FaInstagram className="text-xl" />
-              </a>
-              <a href="" className="text-gray-600 hover:text-[#d3ae27]  transition">
-                <FaWhatsapp className="text-xl" />
-              </a>
+    <footer 
+      className="relative mt-auto"
+      style={{
+        backgroundImage: `url(${footerImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-[#49596B]/60"></div>
+      
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 py-12">
+          <div className="flex flex-col items-center md:flex-row md:justify-between gap-8">
+            {/* Contact Information */}
+            <div className="text-center md:text-right">
+              <h4 className="text-2xl font-bold mb-6 text-[#F2F0E9]">Contact Us</h4>
+              <div className="flex flex-col gap-4">
+                <a 
+                  href="mailto:ot.marketing.c@gmail.com" 
+                  className="hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
+                >
+                  ot.marketing.c@gmail.com
+                </a>
+                <a 
+                  href="https://api.whatsapp.com/send/?phone=96894070404" 
+                  className="flex items-center justify-center md:justify-end gap-3 hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
+                >
+                  <FaWhatsapp className="text-2xl" />
+                  +968 9407 0404
+                </a>
+              </div>
+            </div>
+
+            {/* Logo/Brand Name */}
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-[#F2F0E9]">MARIAN</h2>
+              <p className="text-lg mt-3 text-[#F2F0E9]">For the most elegant looks</p>
             </div>
           </div>
+
+          {/* Copyright */}
+          <div className="border-t border-[#F2F0E9]/30 mt-12 pt-8 text-center">
+            <p className="text-lg text-[#F2F0E9]">
+              © {new Date().getFullYear()} MARIAN. All rights reserved.
+            </p>
+          </div>
         </div>
-
-        {/* حقوق النشر */}
-        <div className="border-t border-gray-200 mt-10 pt-5 text-center text-sm text-gray-600">
-  <p className="leading-relaxed">
-    تم التطوير بواسطة  
-    <a
-      href="https://www.royasow.shop/?fbclid=PAZXh0bgNhZW0CMTEAAaYTcIg4_sRbdjE3amvbI83W5Q4NOvdbIjEIaiT4MZ-HXH2O1_MxVVeaoEc_aem_eOjZi6aO7vV9S3ervc71QQ"
-      className="hover:text-[#d3ae27]  font-semibold hover:underline mx-1"
-    >
-      شركة رؤية
-    </a>
-    بجودة واحترافية
-  </p>
-</div>
-
       </div>
     </footer>
   );

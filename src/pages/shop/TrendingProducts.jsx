@@ -1,88 +1,86 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import RatingStars from '../../components/RatingStars';
 import { useFetchAllProductsQuery } from '../../redux/features/products/productsApi';
 
 const TrendingProducts = () => {
-    const [visibleProducts, setVisibleProducts] = useState(4);
+  const [visibleProducts, setVisibleProducts] = useState(4);
 
-    // جلب البيانات من الخادم
-    const { data: { products = [], totalPages, totalProducts } = {}, error, isLoading } = useFetchAllProductsQuery({
-        category: '',
-        color: '',
-        minPrice: '',
-        maxPrice: '',
-        page: 1,
-        limit: 20, // يمكن تغيير الحد الأقصى حسب الحاجة
-    });
+  const {
+    data: { products = [], totalPages, totalProducts } = {},
+    error,
+    isLoading,
+  } = useFetchAllProductsQuery({
+    category: '',
+    color: '',
+    minPrice: '',
+    maxPrice: '',
+    page: 1,
+    limit: 20,
+  });
 
-    const loadMoreProducts = () => {
-        setVisibleProducts((prevCount) => prevCount + 4);
-    };
+  const loadMoreProducts = () => {
+    setVisibleProducts((prevCount) => prevCount + 4);
+  };
 
-    if (isLoading) {
-        return <div className="text-center py-8">جاري التحميل...</div>;
-    }
+  if (isLoading) {
+    return <div className="text-center py-8">Loading...</div>;
+  }
 
-    if (error) {
-        return <div className="text-center py-8 text-red-500">حدث خطأ أثناء جلب البيانات.</div>;
-    }
+  if (error) {
+    return <div className="text-center py-8 text-red-500">An error occurred while fetching data.</div>;
+  }
 
-    return (
-        <section className="section__container product__container" >
-            <h2 className="section__header text-3xl font-bold text-gray-800 mb-4">
-                المنتجات الجديده
-            </h2>
-            <p className="section__subheader text-lg text-gray-600 mb-12" dir='rtl'>
-                اكتشف أحدث الصيحات: رفع مستوى أناقتك مع مجموعتنا المختارة من منتجات موضة الرجاليه الرائجة.
-            </p>
+  return (
+    <section className="bg-[#F5F5EF] py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-[#3E4F63] mb-6 text-center">Top Selling Tours</h2>
 
-            {/* Product Cards */}
-            <div className="mt-12" dir='rtl'>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {products.slice(0, visibleProducts).map((product) => (
-                        <div key={product._id} className="product__card">
-                            <div className="relative">
-                                <Link to={`/shop/${product._id}`}>
-                                    <div className="aspect-square overflow-hidden"> {/* تحديد نسبة العرض إلى الارتفاع */}
-                                        <img
-                                            src={product.image[0]} // عرض الصورة الأولى من المصفوفة
-                                            alt="product image"
-                                            className="w-full h-full object-cover hover:scale-105 transition-all duration-300"
-                                            onError={(e) => {
-                                                e.target.src = "https://via.placeholder.com/300"; // صورة بديلة في حالة الخطأ
-                                                e.target.alt = "Image not found";
-                                            }}
-                                        />
-                                    </div>
-                                </Link>
-                            </div>
-
-                            {/* Product Description */}
-                            <div className="product__card__content text-center mt-4">
-                                <h4 className="text-lg font-semibold">{product.name}</h4>
-                                <p className="text-[#e9b86b] mt-2">
-                                    {product.price}.ر.ع
-                                    {product.oldPrice && (
-                                        <s className="text-gray-500 ml-2">ر.ع{product.oldPrice}ر.ع</s>
-                                    )}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" dir="rtl">
+          {products.slice(0, visibleProducts).map((product) => (
+            <div key={product._id} className="rounded-xl shadow-md bg-[#F5F5EF] overflow-hidden">
+              <Link to={`/shop/${product._id}`}>
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={product.image[0]}
+                    alt="product image"
+                    className="w-full h-full object-cover hover:scale-105 transition-all duration-300"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/300';
+                      e.target.alt = 'Image not found';
+                    }}
+                  />
                 </div>
+              </Link>
+              <div className="p-4 text-center">
+                <h4 className="text-lg font-semibold text-[#3E4F63]">{product.name}</h4>
+                {/* Uncomment if you want to show price */}
+                {/* <p className="text-[#e9b86b] font-bold text-md mt-2">
+                  {product.price} OMR
+                  {product.oldPrice && (
+                    <s className="text-gray-400 text-sm ml-2">{product.oldPrice} OMR</s>
+                  )}
+                </p> */}
+                <button className="mt-3 bg-[#3E4F63] text-white px-4 py-1 rounded-full text-sm hover:bg-[#2f3c4a] transition-all">
+                  BOOK
+                </button>
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Load More Products Button */}
-            <div className="product__btn text-center mt-8" dir='rtl'>
-                {visibleProducts < products.length && (
-                    <button className="btn bg-[#e9b86b] text-white px-6 py-2 rounded-md" onClick={loadMoreProducts}>
-                        عرض المزيد
-                    </button>
-                )}
-            </div>
-        </section>
-    );
+        {visibleProducts < products.length && (
+          <div className="text-center mt-10">
+            <button
+              className="bg-[#3E4F63] hover:bg-[#2f3c4a] text-white px-6 py-2 rounded-full transition"
+              onClick={loadMoreProducts}
+            >
+              Load More
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
 };
 
 export default TrendingProducts;
