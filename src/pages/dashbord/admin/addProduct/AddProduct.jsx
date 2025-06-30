@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TextInput from './TextInput';
-import SelectInput from './SelectInput';
 import UploadImage from './UploadImage';
 import { useAddProductMutation } from '../../../../redux/features/products/productsApi';
 import { useNavigate } from 'react-router-dom';
-
-const categories = [
-    { label: 'أختر الفئة', value: '' },
-    { label: 'مكياج', value: 'مكياج' },
-    { label: 'عطور', value: 'عطور' },
-    { label: 'بخور', value: 'بخور' },
-    { label: 'ملابس', value: 'ملابس' },
-    { label: 'فوط صحية', value: 'فوط صحية' },
-    { label: 'حفاضات', value: 'حفاضات' },
-    { label: 'كلنكس ومشتقاته', value: 'كلنكس ومشتقاته' },
-    { label: 'أحذية', value: 'أحذية' },
-    { label: 'شنطة', value: 'شنطة' },
-    { label: 'هدايا', value: 'هدايا' }
-];
-
 
 const AddProduct = () => {
     const { user } = useSelector((state) => state.auth);
 
     const [product, setProduct] = useState({
         name: '',
-        category: '',
-        // color: '',
-        price: '',
         description: ''
     });
-    const [image, setImage] = useState([]); // مصفوفة لحفظ روابط الصور
+    const [image, setImage] = useState([]);
 
     const [AddProduct, { isLoading, error }] = useAddProductMutation();
     const navigate = useNavigate();
@@ -46,7 +27,7 @@ const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!product.name || !product.category || !product.price || !product.description ||  image.length === 0) {
+        if (!product.name || !product.description || image.length === 0) {
             alert('أملأ كل الحقول');
             return;
         }
@@ -56,13 +37,10 @@ const AddProduct = () => {
             alert('تمت أضافة المنتج بنجاح');
             setProduct({
                 name: '',
-                category: '',
-                // color: '',
-                price: '',
                 description: ''
             });
             setImage([]);
-            navigate("/shop");
+            navigate("/");
         } catch (error) {
             console.log("Failed to submit product", error);
         }
@@ -70,53 +48,35 @@ const AddProduct = () => {
 
     return (
         <div className="container mx-auto mt-8">
-            <h2 className="text-2xl font-bold mb-6">أضافة منتج جديد</h2>
+            <h2 className="text-2xl font-bold mb-6">أضافة</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <TextInput
-                    label="أسم المنتج"
+                    label="أسم "
                     name="name"
                     placeholder="أكتب أسم المنتج"
                     value={product.name}
                     onChange={handleChange}
                 />
-                <SelectInput
-                    label="صنف المنتج"
-                    name="category"
-                    value={product.category}
-                    onChange={handleChange}
-                    options={categories}
-                />
-                {/* <SelectInput
-                    label="Color"
-                    name="color"
-                    value={product.color}
-                    onChange={handleChange}
-                    options={colors}
-                /> */}
-                <TextInput
-                    label="السعر"
-                    name="price"
-                    type="number"
-                    placeholder="50"
-                    value={product.price}
-                    onChange={handleChange}
-                />
+                
                 <UploadImage
                     name="image"
                     id="image"
                     setImage={setImage}
                 />
-                <div>
-                    <label htmlFor="description" className='block text-sm font-medium text-gray-700'>وصف المنتج</label>
-                    <textarea
-                        name="description"
-                        id="description"
-                        className='add-product-InputCSS'
-                        value={product.description}
-                        placeholder='Write a product description'
-                        onChange={handleChange}
-                    ></textarea>
-                </div>
+                
+<div className="mb-4">
+    <label htmlFor="description" className='block text-sm font-medium text-gray-700 mb-2'>الوصف</label>
+    <textarea
+        name="description"
+        id="description"
+        className='w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[200px]'
+        value={product.description}
+        placeholder='Write a product description'
+        onChange={handleChange}
+        rows="8"
+    ></textarea>
+</div>
+                
                 <div>
                     <button type='submit' className='add-product-btn' disabled={isLoading}>
                         {isLoading ? "جاري الإضافة..." : "أضف منتج"}

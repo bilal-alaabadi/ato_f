@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import avatarImg from "../assets/avatar.png";
 import { useLogoutUserMutation } from '../redux/features/auth/authApi';
 import { logout } from '../redux/features/auth/authSlice';
-import logo from "../assets/image-removebg-preview (4).png"
-const Navbar = () => {
+import logo from "../assets/image-removebg-preview (4).png";
 
-    // User authentication
+const Navbar = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const [logoutUser] = useLogoutUserMutation();
@@ -16,16 +16,10 @@ const Navbar = () => {
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const handleDropDownToggle = () => setIsDropDownOpen(!isDropDownOpen);
 
-    // Mobile menu toggle
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const handleMobileMenuToggle = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
     // Admin dropdown menus
     const adminDropDownMenus = [
         { label: "لوحة التحكم", path: "/dashboard/admin" },
-        // { label: "تعديل المنتج", path: "/dashboard/manage-products" },
-        // { label: "جميع الطلبات", path: "/dashboard/manage-orders" },
-        // { label: "إضافة منتج", path: "/dashboard/add-product" },
+        // يمكن إضافة المزيد لاحقاً
     ];
 
     // User dropdown menus
@@ -49,37 +43,21 @@ const Navbar = () => {
     };
 
     return (
-        <header className='fixed-nav-bar w-full bg-white  pb-10 pt-10'>
-            <nav className='max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center relative'>
-                {/* Mobile Menu Button (Hamburger Icon) */}
-                <button
-                    onClick={handleMobileMenuToggle}
-                    className='sm:hidden text-gray-700 hover:text-primary focus:outline-none'
-                >
-                    <i className="ri-menu-line text-2xl"></i>
-                </button>
-
-
-
-                {/* Logo (Centered) */}
-              <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center h-24"> {/* زيادة ارتفاع الحاوية */}
-  <Link to="/" className="inline-block transition-transform duration-300 hover:scale-105">
-    <img 
-      src={logo} 
-      alt="Website Logo" 
-      className="h-16 md:h-24 object-contain drop-shadow-lg" 
-    />
-  </Link>
-</div>
-
-                {/* Nav Icons */}
-                <div className='flex items-center gap-4 sm:gap-6'>
-
+        <header className='fixed-nav-bar w-full bg-white py-4'>
+            <nav className='max-w-screen-2xl mx-auto px-4 flex items-center justify-between relative'>
+                {/* قسم المستخدم (على اليمين) */}
+                <div className="flex items-center gap-4 ml-auto">
                     {user ? (
-                        <div className='relative'>
-
+                        <div className='relative flex items-center gap-2'>
+                            <img
+                                src={user?.profileImage || avatarImg}
+                                alt="صورة المستخدم"
+                                className='size-8 rounded-full cursor-pointer'
+                                onClick={handleDropDownToggle}
+                            />
+                            
                             {isDropDownOpen && (
-                                <div className='absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50'>
+                                <div className='absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50'>
                                     <ul className='space-y-2 p-2'>
                                         {dropdownMenus.map((menu, index) => (
                                             <li key={index}>
@@ -105,35 +83,28 @@ const Navbar = () => {
                             )}
                         </div>
                     ) : (
-                        <Link to="/login" className='hover:text-primary'>
-                            <i className="ri-user-line text-lg"></i>
+                        <Link 
+                            to="/login" 
+                            className='flex items-center gap-2 text-gray-700 hover:text-primary'
+                        >
+                            <i className="ri-user-line"></i>
+                            <span>تسجيل الدخول</span>
                         </Link>
                     )}
                 </div>
 
-                {/* Mobile Menu (Links for Small Screens) */}
-                {isMobileMenuOpen && (
-                    <div className='sm:hidden absolute top-16 left-0 w-full bg-white shadow-md z-40'>
-                        {/* <ul className='flex flex-col gap-4 p-4'>
-                            <li>
-                                <Link to="/" className='block text-sm hover:text-primary transition-colors duration-300'>
-                                    الرئيسية
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/shop" className='block text-sm hover:text-primary transition-colors duration-300'>
-                                    المتجر
-                                </Link>
-                            </li>
-
-
-                        </ul> */}
-                    </div>
-                )}
+                {/* الشعار (في المنتصف) */}
+                <div className="absolute left-1/2 transform -translate-x-1/2">
+                    <Link to="/" className="inline-block">
+                        <img 
+                            src={logo} 
+                            alt="شعار الموقع" 
+                            className="w-40 h-auto"
+                            loading="lazy" 
+                        />
+                    </Link>
+                </div>
             </nav>
-
-            {/* Cart Modal */}
-            {/* {isCartOpen && <CartModal products={products} isOpen={isCartOpen} onClose={handleCartToggle} />} */}
         </header>
     );
 };

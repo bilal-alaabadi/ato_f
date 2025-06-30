@@ -46,76 +46,66 @@ const SingleProduct = () => {
      
 
       {/* Tour Details */}
-      <section className='section__container mt-10'>
-        <div className='flex flex-col items-center md:flex-row gap-10'>
-          {/* Tour Images */}
-          <div className='md:w-1/2 w-full relative'>
-            {singleProduct.image && singleProduct.image.length > 0 ? (
-              <>
-                <img
-                  src={singleProduct.image[currentImageIndex]}
-                  alt={singleProduct.name}
-                  className='rounded-xl w-full h-auto shadow-md'
-                  onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/500";
-                    e.target.alt = "Image not found";
-                  }}
-                />
-                {singleProduct.image.length > 1 && (
-                  <>
-                    <button onClick={prevImage} className='absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-40 text-white p-2 rounded-full'>
-                      <i className="ri-arrow-left-s-line"></i>
-                    </button>
-                    <button onClick={nextImage} className='absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-40 text-white p-2 rounded-full'>
-                      <i className="ri-arrow-right-s-line"></i>
-                    </button>
-                  </>
-                )}
-              </>
-            ) : (
-              <p className="text-red-600">No images available for this tour.</p>
+<section className="bg-[#f6f6f1] py-12">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col md:flex-row gap-8 bg-white rounded-xl shadow-lg overflow-hidden">
+      {/* Tour Images */}
+      <div className="md:w-1/2 relative">
+        {singleProduct.image && singleProduct.image.length > 0 ? (
+          <div className="relative h-full">
+            <img
+              src={singleProduct.image[currentImageIndex]}
+              alt={singleProduct.name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = "https://via.placeholder.com/800x500?text=Tour+Image";
+                e.target.alt = "Image not available";
+              }}
+            />
+            {singleProduct.image.length > 1 && (
+              <div className="absolute inset-0 flex items-center justify-between px-4">
+                <button 
+                  onClick={prevImage}
+                  className="bg-[#3a4a62] bg-opacity-70 text-white p-2 rounded-full hover:bg-opacity-90 transition"
+                >
+                  <i className="ri-arrow-left-s-line text-xl"></i>
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="bg-[#3a4a62] bg-opacity-70 text-white p-2 rounded-full hover:bg-opacity-90 transition"
+                >
+                  <i className="ri-arrow-right-s-line text-xl"></i>
+                </button>
+              </div>
             )}
           </div>
-
-          {/* Tour Info */}
-          <div className='md:w-1/2 w-full'>
-            {/* <h3 className='text-3xl font-bold text-[#3E4F63] mb-4'>{singleProduct.name}</h3> */}
-            {/* <p className='text-xl text-[#e9b86b] font-semibold mb-4'>
-              {singleProduct.price} OMR
-              {singleProduct.oldPrice && <s className='ml-2 text-gray-500'>{singleProduct.oldPrice} OMR</s>}
-            </p> */}
-
-            <p className='text-gray-700 leading-relaxed mb-6'>
-              Discover the breathtaking beauty of {singleProduct.name}! This tour is perfect for adventure lovers,
-              nature enthusiasts, and cultural explorers. Enjoy unforgettable landscapes, local experiences,
-              and relaxing escapes all in one package.
-            </p>
-
-            <ul className='list-disc pl-6 text-gray-600 mb-6 space-y-2'>
-              <li>3-night stay in a luxury hotel</li>
-              <li>All-inclusive daily meals</li>
-              <li>Professional tour guide throughout the trip</li>
-              <li>Private airport pickup & drop-off</li>
-              <li>Outdoor activities: hiking, waterfalls, and cultural exploration</li>
-            </ul>
-
-            <div className='flex flex-col space-y-2 text-sm text-gray-500'>
-              {/* <p><strong>Category:</strong> {singleProduct.category}</p> */}
-              <p><strong>Theme:</strong> {singleProduct.color}</p>
-            </div>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleAddToCart(singleProduct);
-              }}
-              className='mt-6 px-6 py-3 bg-[#3E4F63] hover:bg-[#2f3c4a] text-white rounded-md text-lg transition'
-            >
-              Book Now
-            </button>
+        ) : (
+          <div className="w-full h-64 bg-gray-100 flex items-center justify-center">
+            <p className="text-gray-500">No images available</p>
           </div>
-        </div>
-      </section>
+        )}
+      </div>
+
+      {/* Tour Info */}
+      <div className="md:w-1/2 p-8 flex flex-col justify-center" >
+        <div className="flex justify-center">
+  <h2 className="text-3xl font-bold text-[#3a4a62] mb-4">
+    {singleProduct.name}
+  </h2>
+</div>
+
+       <div className='mb-6'>
+    <h4 className='text-lg font-bold text-gray-800 mb-2' dir='rtl'>description:</h4>
+    <div className="text-gray-600 leading-relaxed whitespace-pre-line" dir='rtl'>
+        {singleProduct.description.split('\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+        ))}
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Reviews Section */}
       <section className='section__container mt-16'>

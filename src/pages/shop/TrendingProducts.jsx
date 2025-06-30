@@ -53,16 +53,8 @@ const TrendingProducts = () => {
               </Link>
               <div className="p-4 text-center">
                 <h4 className="text-lg font-semibold text-[#3E4F63]">{product.name}</h4>
-                {/* Uncomment if you want to show price */}
-                {/* <p className="text-[#e9b86b] font-bold text-md mt-2">
-                  {product.price} OMR
-                  {product.oldPrice && (
-                    <s className="text-gray-400 text-sm ml-2">{product.oldPrice} OMR</s>
-                  )}
-                </p> */}
-                <button className="mt-3 bg-[#3E4F63] text-white px-4 py-1 rounded-full text-sm hover:bg-[#2f3c4a] transition-all">
-                  BOOK
-                </button>
+
+
               </div>
             </div>
           ))}
