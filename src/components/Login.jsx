@@ -59,12 +59,12 @@ const Login = () => {
             />
             {message && <p className='text-red-500'>{message}</p>}
 
-            {/* <button
+            <button
                 type='submit'
                 className='w-full mt-5 bg-primary text-white hover:bg-indigo-500 font-medium py-3 rounded-md'
             >
                 تسجيل الدخول
-            </button> */}
+            </button>
         </form>
 
         {/* <p className='my-5 italic text-sm text-center'>

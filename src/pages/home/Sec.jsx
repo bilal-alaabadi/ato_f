@@ -11,7 +11,7 @@ const Sec = () => {
           <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-16">
             {/* Left (Star + Image) */}
             <div className="flex flex-col items-center">
-              <div className="text-yellow-300 text-6xl sm:text-7xl mb-4 sm:mb-6">✦</div>
+              <div className="text-white text-6xl sm:text-7xl mb-4 sm:mb-6">✦</div>
               <img
                 src={hotelImage}
                 alt="Hotel Reception"
@@ -57,7 +57,7 @@ const Sec = () => {
                 Minor modifications increase the attractiveness of the facility.
                </div>
               <div className="border-4 border-white p-6 sm:p-8 text-white text-xl sm:text-2xl font-mono hover:bg-white hover:text-[#3E4F63] transition-all duration-300">
-                Achieving real and fast results.
+                Achieving real and fast results.
               </div>
             </div>
           </div>
