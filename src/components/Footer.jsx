@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import footerImage from "../assets/pool-relaxation-sea-scene-nature.jpg"; // Replace with your actual image
+import footerImage from "../assets/DAT Consultancy Beachfront Villa in Palm Jumeirah Dubai.jpg"; // Replace with your actual image
 
 const Footer = () => {
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
                   href="mailto:ot.marketing.c@gmail.com" 
                   className="hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
                 >
-                  ot.marketing.c@gmail.com
+octopustourism@gmail.com
                 </a>
                 <a 
                   href="https://api.whatsapp.com/send/?phone=96894070404" 
@@ -41,16 +41,14 @@ const Footer = () => {
 
             {/* Logo/Brand Name */}
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-[#F2F0E9]">MARIAN</h2>
-              <p className="text-lg mt-3 text-[#F2F0E9]">For the most elegant looks</p>
+              <h2 className="text-3xl font-bold text-[#F2F0E9]">OTM</h2>
+              <p className="text-lg mt-3 text-[#F2F0E9]">MARKETING</p>
             </div>
           </div>
 
           {/* Copyright */}
           <div className="border-t border-[#F2F0E9]/30 mt-12 pt-8 text-center">
-            <p className="text-lg text-[#F2F0E9]">
-              © {new Date().getFullYear()} MARIAN. All rights reserved.
-            </p>
+           
           </div>
         </div>
       </div>

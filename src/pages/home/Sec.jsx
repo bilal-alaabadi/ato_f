@@ -1,5 +1,5 @@
 import React from 'react';
-import hotelImage from '../../assets/hotel-receptionist-work.jpg';
+import hotelImage from '../../assets/Screenshot 2025-07-02 172520.png';
 
 const Sec = () => {
   return (
@@ -51,13 +51,13 @@ const Sec = () => {
             {/* Cards */}
             <div className="flex flex-col gap-6 sm:gap-12 w-full lg:w-2/3">
               <div className="border-4 border-white p-6 sm:p-8 text-white text-xl sm:text-2xl font-mono hover:bg-white hover:text-[#3E4F63] transition-all duration-300">
-                Explain a strategy to increase occupancy rates.
+                Develop a strategy to increase occupancy rates.
               </div>
               <div className="border-4 border-white p-6 sm:p-8 text-white text-xl sm:text-2xl font-mono hover:bg-white hover:text-[#3E4F63] transition-all duration-300">
-                Seasonal marketing plans.
-              </div>
+                Minor modifications increase the attractiveness of the facility.
+               </div>
               <div className="border-4 border-white p-6 sm:p-8 text-white text-xl sm:text-2xl font-mono hover:bg-white hover:text-[#3E4F63] transition-all duration-300">
-                Improving the efficiency of the organization's marketing management.
+                Achieving real and fast results.
               </div>
             </div>
           </div>

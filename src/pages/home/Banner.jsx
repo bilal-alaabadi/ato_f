@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import timings from "../../assets/swimming-pool.jpg";
+import timings from "../../assets/download (12).jpg";
 
 const Banner = () => {
     return (

@@ -88,7 +88,6 @@ const Navbar = () => {
                             className='flex items-center gap-2 text-gray-700 hover:text-primary'
                         >
                             <i className="ri-user-line"></i>
-                            <span>تسجيل الدخول</span>
                         </Link>
                     )}
                 </div>

@@ -10,8 +10,7 @@ const Ther = () => {
             Questionnaire<br />stage
           </h2>
           <p className="text-[#3E4F63] text-sm sm:text-base md:text-lg pt-4 font-mono">
-            At this stage, we send a questionnaire to the client, requesting some necessary information about the facility.
-          </p>
+We send a simple questionnaire to the client, requesting important information about the facility. The goal is to obtain the information upon which we will later build our marketing plan.        </p>
         </div>
       </div>
 
