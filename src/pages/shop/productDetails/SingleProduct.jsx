@@ -110,13 +110,14 @@ const SingleProduct = () => {
               </div>
 
               <div className='mb-6'>
-                <h4 className='text-lg font-bold text-gray-800 mb-2' dir='rtl'>description:</h4>
-                <div className="text-gray-600 leading-relaxed whitespace-pre-line" dir='rtl'>
-                    {singleProduct.description.split('\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))}
-                </div>
-              </div>
+  <h4 className='text-lg font-bold text-gray-800 mb-2'>Description:</h4>
+  <div className="text-gray-600 leading-relaxed whitespace-pre-line">
+    {singleProduct.description.split('\n').map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ))}
+  </div>
+</div>
+
             </div>
           </div>
         </div>
