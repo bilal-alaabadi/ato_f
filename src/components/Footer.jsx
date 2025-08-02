@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import footerImage from "../assets/DAT Consultancy Beachfront Villa in Palm Jumeirah Dubai.jpg"; // Replace with your actual image
 
 const Footer = () => {
@@ -27,14 +27,21 @@ const Footer = () => {
                   href="mailto:ot.marketing.c@gmail.com" 
                   className="hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
                 >
-octopustourism@gmail.com
+                  octopustourism@gmail.com
                 </a>
                 <a 
-                  href="https://api.whatsapp.com/send/?phone=96894070404" 
+                  href="https://api.whatsapp.com/send/?phone=96879009942" 
                   className="flex items-center justify-center md:justify-end gap-3 hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
                 >
                   <FaWhatsapp className="text-2xl" />
-                  +968 9407 0404
+                  +968 7900 9942
+                </a>
+                <a 
+                  href="https://www.instagram.com/otmark1?igsh=NTNiajUyNGZjNTNo" 
+                  className="flex items-center justify-center md:justify-end gap-3 hover:text-[#d3ae27] transition-colors duration-300 text-lg text-[#F2F0E9]"
+                >
+                  <FaInstagram className="text-2xl" />
+                  @otmark1
                 </a>
               </div>
             </div>
