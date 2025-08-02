@@ -10,7 +10,7 @@ import Testimonials from '../shop/TrendingProducts'
 // import For from './For'
 
 const Home = () => {
-    const whatsappNumber = "96894070404"; // استبدل بالرقم الفعلي
+    const whatsappNumber = "96879009942"; // استبدل بالرقم الفعلي
 const whatsappMessage = "Hello, I would like to inquire about your service.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   return (
